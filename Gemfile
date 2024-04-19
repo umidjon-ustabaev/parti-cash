@@ -66,7 +66,7 @@ group :development, :test do
   # This gem provides Ruby bindings for Selenium. [https://github.com/Seleni
   # umHQ/selenium/tree/trunk/rb]
   gem 'selenium-webdriver'
-  
+
   # Testing framework [https://github.com/rspec/rspec-rails]
   gem 'rspec-rails'
 
