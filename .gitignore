@@ -17,6 +17,14 @@
 !/log/.keep
 !/tmp/.keep
 
+# dotenv, dotenv-rails
+# TODO Comment out these rules if environment variables can be committed
+.env
+.env*.local
+
+# ignore all idea
+.idea/*
+
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
 !/tmp/pids/
@@ -33,3 +41,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+/app/assets/builds/*
+!/app/assets/builds/.keep

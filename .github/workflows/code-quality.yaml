@@ -1,0 +1,52 @@
+name: Code quality
+on: [push]
+
+jobs:
+  code-quality:
+    name: Code quality
+    runs-on: ubuntu-latest
+
+    env:
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_TEST_MASTER_KEY }}
+      RAILS_ENV: test
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/test
+
+    services:
+      postgres:
+        image: postgres:latest
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install --path vendor/bundle --jobs 4 --retry 3
+
+      - name: Create database
+        run: bundler exec rails db:setup
+
+      - name: zeitwerk
+        run: bundler exec rake zeitwerk:check
+
+      - name: Run brakeman
+        run: bundler exec brakeman -A
+
+      - name: Run rubocop
+        run: bundler exec rubocop
