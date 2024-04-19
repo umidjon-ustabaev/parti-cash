@@ -47,6 +47,46 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+
+  # Pry is a powerful alternative to the standard IRB shell for Ruby. [https://github.com/pry/pry-rails]
+  gem 'pry-rails'
+
+  # Brakeman is a static analysis tool which checks Ruby on Rails applications for security vulnerabilities. See https://github.com/presidentbeef/brakeman
+  gem 'brakeman', require: false
+
+  # Capybara helps to test web applications by simulating how a real user would interact with your app. See https://github.com/teamcapybara/capybara
+  gem 'capybara'
+
+  # Capture a screenshot for every test failure automatically. [https://github.com/mattheworiordan/capybara-screenshot]
+  gem 'capybara-screenshot'
+
+  # This gem provides Ruby bindings for Selenium. [https://github.com/Seleni
+  # umHQ/selenium/tree/trunk/rb]
+  gem 'selenium-webdriver'
+
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'debug', platforms: %i[mri mingw x64_mingw]
+
+  # Testing framework [https://github.com/rspec/rspec-rails]
+  gem 'rspec-rails'
+
+  # RuboCop is a Ruby static code analyzer. See https://github.com/rubocop/rubocop
+  gem 'rubocop', require: false
+
+  # Performance optimization analysis for your projects, as an extension to RuboCop. See https://github.com/rubocop/rubocop-performance
+  gem 'rubocop-performance', require: false
+
+  # A RuboCop extension focused on enforcing Rails best practices and coding conventions. See https://github.com/rubocop/rubocop-rails
+  gem 'rubocop-rails', require: false
+
+  # RSpec-specific analysis for your projects, as an extension to RuboCop. See https://github.com/rubocop/rubocop-rspec
+  gem 'rubocop-rspec', require: false
+
+  # factory_bot is a fixtures replacement [https://github.com/thoughtbot/factory_bot_rails]
+  gem 'factory_bot_rails'
+
+  # This gem is a port of Perl's Data::Faker library that generates fake data [https://github.com/faker-ruby/faker]
+  gem 'faker'
 end
 
 group :development do

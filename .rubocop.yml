@@ -1,0 +1,40 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "bin/*"
+    - "vendor/bundle/**/*"
+    - "db/schema.rb"
+    - ".simplecov"
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+    - "app/admin/**/*"
+    - "config/environments/*"
+
+Metrics/ModuleLength:
+  Exclude:
+    - "spec/**/*"
+
+Metrics/MethodLength:
+  Exclude:
+    - "db/migrate/*"
+
+Metrics/AbcSize:
+  Exclude:
+    - "db/migrate/*"
+
+Rails/CreateTableWithTimestamps:
+  Exclude:
+    - "db/migrate/20220322080803_create_active_storage_tables.rb"
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: either
